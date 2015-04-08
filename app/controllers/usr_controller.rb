@@ -25,4 +25,9 @@ class UsrController < ApplicationController
       login_count: usr.logincount
     }
   end
+
+  def clear
+    User.delete_all
+    head :ok
+  end
 end

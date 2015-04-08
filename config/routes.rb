@@ -3,4 +3,5 @@ Rails.application.routes.draw do
   post 'signup' => 'usr#signup'
   post 'login' => 'usr#login'
   get 'welcome' => 'usr#welcome'
+  post 'clearData' => 'usr#clear'
 end
