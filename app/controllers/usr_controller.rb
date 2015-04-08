@@ -1,0 +1,2 @@
+class UsrController < ApplicationController
+end
