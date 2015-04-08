@@ -7,7 +7,7 @@ $(function() {
 
     $.post('/login', obj)
     .done(function(response) {
-      console.log(response);
+      location.href = '/welcome';
     });
 
   });
@@ -20,7 +20,7 @@ $(function() {
 
     $.post('/signup', obj)
     .done(function(response) {
-      console.log(response);
+      location.href = '/welcome';
     });
   });
 
