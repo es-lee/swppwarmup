@@ -3,11 +3,14 @@ class UsrController < ApplicationController
   end
 
   def signup
-    id = params[:id]
-    pw = params[:pw]
+    usr = User.new
+    usr.username = params[:id]
+    usr.password = params[:pw]
+    usr.logincount = 1
+    usr.save
 
     render json: {
-      user_name: id,
+      user_name: usr.username,
       login_count: 1
     }
   end
