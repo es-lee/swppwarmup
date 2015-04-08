@@ -5,9 +5,13 @@ $(function() {
       pw: $('#pw').val()
     };
 
-    console.log(obj);
+    $.post('/login', obj)
+    .done(function(response) {
+      console.log(response);
+    });
 
   });
+
   $('button#signup').click(function() {
     var obj = {
       id: $('#id').val(),
@@ -19,6 +23,7 @@ $(function() {
       console.log(response);
     });
   });
+
 });
 
 
