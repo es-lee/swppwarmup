@@ -14,10 +14,18 @@ $(function() {
       pw: $('#pw').val()
     };
 
-    $.post('/signup')
+    $.post('/signup', obj)
     .done(function(response) {
-      console.log('돌아옴');
       console.log(response);
     });
   });
 });
+
+
+/*
+ * rails obj[:key]
+ *      obj['key']
+ *
+ * js   obj['key']
+ *      obj.key
+ */

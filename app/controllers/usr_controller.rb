@@ -3,6 +3,12 @@ class UsrController < ApplicationController
   end
 
   def signup
-    render plain: 'ajax 요청 보내기 성공'
+    id = params[:id]
+    pw = params[:pw]
+
+    render json: {
+      user_name: id,
+      login_count: 1
+    }
   end
 end
