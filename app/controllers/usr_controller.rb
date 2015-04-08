@@ -3,6 +3,6 @@ class UsrController < ApplicationController
   end
 
   def signup
-    render plain: 'Hi'
+    render plain: 'ajax 요청 보내기 성공'
   end
 end
