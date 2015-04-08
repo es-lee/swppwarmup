@@ -1,4 +1,8 @@
 $(function() {
+  function err(msg) {
+    $('#msgbox').text(msg);
+  }
+
   $('button#login').click(function() {
     var obj = {
       id: $('#id').val(),
@@ -8,8 +12,9 @@ $(function() {
     $.post('/login', obj)
     .done(function(response) {
       location.href = '/welcome';
+    }).fail(function() {
+      err("Invalid username and password combination. Please try again.");
     });
-
   });
 
   $('button#signup').click(function() {
@@ -21,9 +26,21 @@ $(function() {
     $.post('/signup', obj)
     .done(function(response) {
       location.href = '/welcome';
+    })
+    .fail(function(e) {
+      switch(e.responseJSON.error_code) {
+        case -1:
+          msg = "The user name should be 5~20 characters long. Please try again."
+          break;
+        case -2:
+          msg = "The password should be 8~20 characters long. Please try again."
+          break;
+        case -3:
+          msg ="This user name already exists. Please try again."
+      }
+      err(msg);
     });
   });
-
 });
 
 

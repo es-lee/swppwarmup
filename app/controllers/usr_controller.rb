@@ -17,19 +17,19 @@ class UsrController < ApplicationController
       if msg[:username] && (msg[:username] != ["has already been taken"])
         render json: {
           error_code: -1
-        }
+        }, status: 412
       elsif usr.errors.messages[:password]
         render json: {
           error_code: -2
-        }
+        }, status: 412
       elsif msg[:username] && (msg[:username] == ["has already been taken"])
         render json: {
           error_code: -3
-        }
+        }, status: 412
       else
         render json: {
           error_code: -5
-        }
+        }, status: 412
       end
     end
   end
@@ -46,7 +46,7 @@ class UsrController < ApplicationController
     else
       render json: {
         error_code: -4
-      }
+      }, status: 412
     end
   end
 
