@@ -1,4 +1,4 @@
-$(function() {
+$(document).on('page:change', function() {
   function err(msg) {
     $('#msgbox').text(msg);
   }
@@ -11,7 +11,7 @@ $(function() {
 
     $.post('/login', obj)
     .done(function(response) {
-      location.href = '/welcome';
+      location.href = '/welcome/'+response.user_name+'/'+response.login_count;
     }).fail(function() {
       err("Invalid username and password combination. Please try again.");
     });
@@ -25,7 +25,7 @@ $(function() {
 
     $.post('/signup', obj)
     .done(function(response) {
-      location.href = '/welcome';
+      location.href = '/welcome/'+response.user_name+'/'+response.login_count;
     })
     .fail(function(e) {
       switch(e.responseJSON.error_code) {
