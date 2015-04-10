@@ -5,8 +5,8 @@ $(document).on('page:change', function() {
 
   $('button#login').click(function() {
     var obj = {
-      id: $('#id').val(),
-      pw: $('#pw').val()
+      username: $('#id').val(),
+      password: $('#pw').val()
     };
 
     $.post('/login', obj)
@@ -19,8 +19,8 @@ $(document).on('page:change', function() {
 
   $('button#signup').click(function() {
     var obj = {
-      id: $('#id').val(),
-      pw: $('#pw').val()
+      username: $('#id').val(),
+      password: $('#pw').val()
     };
 
     $.post('/signup', obj)

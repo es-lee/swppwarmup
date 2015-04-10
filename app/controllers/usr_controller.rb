@@ -1,17 +1,19 @@
 class UsrController < ApplicationController
+  skip_before_filter :verity_authenticity_token
   def main
   end
 
   def signup
+	puts params
     usr = User.new
-    usr.username = params[:id]
-    usr.password = params[:pw]
+    usr.username = params[:username]
+    usr.password = params[:password]
     usr.logincount = 1
     if usr.save
       render json: {
         user_name: usr.username,
         login_count: 1
-      }
+      }, status: 200
     else
       msg = usr.errors.messages
       if msg[:username] && (msg[:username] != ["has already been taken"])
@@ -35,14 +37,14 @@ class UsrController < ApplicationController
   end
 
   def login
-    usr = User.where(username: params[:id], password: params[:pw]).first()
+    usr = User.where(username: params[:username], password: params[:password]).first()
     if usr
       usr.logincount += 1
       usr.save
       render json: {
         user_name: usr.username,
         login_count: usr.logincount
-      }
+      }, status: 200
     else
       render json: {
         error_code: -4
